@@ -30,18 +30,20 @@ public class PlayerMovement : Godot.KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-       Move();
        //GD.Print(isJumping + " : " + IsOnWall());
+       Move();
        velocity.y += currentGravity * delta;
+       
        if (isJumping && IsOnFloor())
        {
            GD.Print("On floor");
            jumpCounter = 0;
            jumpCounter++;
            isJumping = false;
+           wallJumpCounter = 0;
        }
 
-       if (IsOnWall() && canStick)
+       if (IsOnWall() && canStick && wallJumpCounter < 1)
        {
            GD.Print("On wall");
            isJumping = false;
@@ -49,8 +51,9 @@ public class PlayerMovement : Godot.KinematicBody2D
            velocity.y = 0;
            WallJumpTimer(WallJumpHangTime);
            canStick = false;
+           velocity.x = 0;
        }
-
+       
        velocity = MoveAndSlide(velocity, floorOrientation);
     }
 
@@ -58,10 +61,10 @@ public class PlayerMovement : Godot.KinematicBody2D
     private bool right;
     private bool left;
     private int jumpCounter = 0;
+    private int wallJumpCounter = 0;
     private void Move()
     {
         velocity.x = 0;
-
         if (jump)
         {
             currentGravity = DefaultGravity;
@@ -72,6 +75,11 @@ public class PlayerMovement : Godot.KinematicBody2D
             GD.Print("jump");
             velocity.y = JumpSpeed;
             jumpCounter++;
+            if (IsOnWall())
+            {
+                //GD.Print(RunSpeed * col.Normal.x);
+                //velocity.x += (RunSpeed * col.Normal.x) * 5;
+            }
         }
 
         if (right)
