@@ -3,4 +3,7 @@
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>CaptainCollateral</RootNamespace>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="world-entities" />
+  </ItemGroup>
 </Project>
