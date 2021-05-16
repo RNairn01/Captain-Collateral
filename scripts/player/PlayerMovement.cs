@@ -10,7 +10,8 @@ public class PlayerMovement : Godot.KinematicBody2D
     
     private float currentGravity;
 
-    private bool isJumping;
+    //private bool isJumping;
+    private bool onGround;
     private bool canStick;
     private Vector2 velocity = new Vector2();
     private readonly Vector2 floorOrientation = new Vector2(0, -1);
@@ -18,43 +19,25 @@ public class PlayerMovement : Godot.KinematicBody2D
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        isJumping = false;
+     //   isJumping = false;
+        onGround = false;
         canStick = true;
         currentGravity = DefaultGravity;
     }
 
     public override void _Process(float delta)
     {
-        GetInput();
+       //GetInput();
     }
 
     public override void _PhysicsProcess(float delta)
     {
-       //GD.Print(isJumping + " : " + IsOnWall());
-       Move();
-       velocity.y += currentGravity * delta;
-       
-       if (isJumping && IsOnFloor())
-       {
-           GD.Print("On floor");
-           jumpCounter = 0;
-           jumpCounter++;
-           isJumping = false;
-           wallJumpCounter = 0;
-       }
-
-       if (IsOnWall() && canStick && wallJumpCounter < 1)
-       {
-           GD.Print("On wall");
-           isJumping = false;
-           jumpCounter = 0;
-           velocity.y = 0;
-           WallJumpTimer(WallJumpHangTime);
-           canStick = false;
-           velocity.x = 0;
-       }
-       
        velocity = MoveAndSlide(velocity, floorOrientation);
+       //GD.Print(isJumping + " : " + IsOnWall());
+       velocity.y += currentGravity;
+       Move();
+       Jump();
+       GetInput();
     }
 
     private bool jump;
@@ -65,22 +48,6 @@ public class PlayerMovement : Godot.KinematicBody2D
     private void Move()
     {
         velocity.x = 0;
-        if (jump)
-        {
-            currentGravity = DefaultGravity;
-        }
-        if (jump && jumpCounter < 2)
-        {
-            isJumping = true;
-            GD.Print("jump");
-            velocity.y = JumpSpeed;
-            jumpCounter++;
-            if (IsOnWall())
-            {
-                //GD.Print(RunSpeed * col.Normal.x);
-                //velocity.x += (RunSpeed * col.Normal.x) * 5;
-            }
-        }
 
         if (right)
         {
@@ -92,6 +59,55 @@ public class PlayerMovement : Godot.KinematicBody2D
         }
     }
 
+    private void Jump()
+    {
+        if (IsOnFloor())
+        {
+            onGround = true;
+            jumpCounter = 0;
+            wallJumpCounter = 0;
+        }
+        else onGround = false;
+
+
+        if (IsOnWall() && canStick && wallJumpCounter < 1)
+        {
+           GD.Print("On wall");
+           jumpCounter = 0;
+           velocity.y = 0;
+           WallJumpTimer(WallJumpHangTime);
+           canStick = false;
+           velocity.x = 0;
+        }
+        
+        if (jump)
+        {
+            currentGravity = DefaultGravity;
+        }
+        if (jump && jumpCounter < 2)
+        {
+            velocity.y = JumpSpeed;
+            AudioStreamPlayer jump;
+            GD.Print(jumpCounter);
+            switch (jumpCounter)
+            {
+                case 0:
+                    jump = GetChild<AudioStreamPlayer>(2);
+                    break;
+                case 1:
+                    jump = GetChild<AudioStreamPlayer>(3);
+                    break;
+                default:
+                    jump = new AudioStreamPlayer();
+                    break;
+            }
+            jump.Play();
+            jumpCounter++;
+            onGround = false;
+        }
+
+        
+    }
     private void GetInput()
     {
         jump = Input.IsActionJustPressed("ui_select");

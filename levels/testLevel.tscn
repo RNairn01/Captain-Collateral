@@ -45,6 +45,10 @@ shape = SubResource( 2 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 148.794, 487.036 )
+DefaultGravity = 20.0
 
 [node name="SweepMess" parent="." instance=ExtResource( 3 )]
 position = Vector2( 283.172, 667.419 )
+
+[node name="SweepMess2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 544.719, 665.929 )

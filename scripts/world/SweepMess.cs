@@ -14,13 +14,28 @@ public class SweepMess : Node2D
     
     }
 
+    private bool hasBeenTriggered = false;
     public void _on_Area2D_body_entered(PhysicsBody2D body)
     {
-        GD.Print("entered");
-        GD.Print(body.Name);
-        if (body.Name == "player")
+        if (body.Name == "player" && !hasBeenTriggered)
         {
-            QueueFree();
+            hasBeenTriggered = true;
+            GD.Print("yes");
+            var children = GetChildren();
+            foreach (var child in children)
+            {
+               GD.Print(child.ToString()); 
+            }
+            var sweep = GetChild<AudioStreamPlayer>(2);
+            GD.Print(sweep.Filename);
+            sweep.Play();
+            Visible = false;
+            RemovalTimer(0.8f);
         }
+    }
+    private async void RemovalTimer(float time)
+    {
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        QueueFree();
     }
 }
