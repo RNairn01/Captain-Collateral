@@ -7,37 +7,37 @@ public class PlayerMovement : Godot.KinematicBody2D
     [Export] public float JumpSpeed = -400;
     [Export] public float DefaultGravity = 500;
     [Export] public float WallJumpHangTime = 0.5f;
+    public bool IsSweeping;
     
     private float currentGravity;
 
-    //private bool isJumping;
     private bool onGround;
     private bool canStick;
     private Vector2 velocity = new Vector2();
     private readonly Vector2 floorOrientation = new Vector2(0, -1);
+
+    private AnimatedSprite anim;
     
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-     //   isJumping = false;
         onGround = false;
         canStick = true;
         currentGravity = DefaultGravity;
+        anim = GetNode<AnimatedSprite>("AnimatedSprite");
     }
 
     public override void _Process(float delta)
     {
-       //GetInput();
+       GetInput();
     }
 
     public override void _PhysicsProcess(float delta)
     {
        velocity = MoveAndSlide(velocity, floorOrientation);
-       //GD.Print(isJumping + " : " + IsOnWall());
        velocity.y += currentGravity;
        Move();
        Jump();
-       GetInput();
     }
 
     private bool jump;
@@ -52,10 +52,26 @@ public class PlayerMovement : Godot.KinematicBody2D
         if (right)
         {
             velocity.x += RunSpeed;
+            anim.FlipH = false;
+            
         }
         if (left)
         {
             velocity.x -= RunSpeed;
+            anim.FlipH = true;
+        }
+
+        if ((right || left) && IsOnFloor() && IsSweeping)
+        {
+            anim.Animation = "sweep";
+        }
+        else if ((right || left) && IsOnFloor())
+        {
+            anim.Animation = "run";
+        }
+        else if (IsOnFloor())
+        {
+            anim.Animation = "idle";
         }
     }
 
@@ -93,9 +109,11 @@ public class PlayerMovement : Godot.KinematicBody2D
             {
                 case 0:
                     jump = GetChild<AudioStreamPlayer>(2);
+                    anim.Animation = "jump1";
                     break;
                 case 1:
                     jump = GetChild<AudioStreamPlayer>(3);
+                    anim.Animation = "jump2";
                     break;
                 default:
                     jump = new AudioStreamPlayer();

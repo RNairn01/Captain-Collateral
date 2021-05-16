@@ -4,9 +4,12 @@ using System;
 public class SweepMess : Node2D
 {
     private Area2D area;
+    private PlayerMovement player;
     public override void _Ready()
-    {
-       area = GetChild<Area2D>(1); 
+    {  
+        player = GetNode<PlayerMovement>("../player");
+        GD.Print(player.Name);
+        area = GetChild<Area2D>(1); 
     }
 
     public override void _PhysicsProcess(float delta)
@@ -29,6 +32,7 @@ public class SweepMess : Node2D
             var sweep = GetChild<AudioStreamPlayer>(2);
             GD.Print(sweep.Filename);
             sweep.Play();
+            player.IsSweeping = true;
             Visible = false;
             RemovalTimer(0.8f);
         }
@@ -36,6 +40,7 @@ public class SweepMess : Node2D
     private async void RemovalTimer(float time)
     {
         await ToSignal(GetTree().CreateTimer(time), "timeout");
+        player.IsSweeping = false;
         QueueFree();
     }
 }
