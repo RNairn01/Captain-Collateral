@@ -128,9 +128,9 @@ public class PlayerMovement : Godot.KinematicBody2D
     }
     private void GetInput()
     {
-        jump = Input.IsActionJustPressed("ui_select");
-        right = Input.IsActionPressed("ui_right");
-        left = Input.IsActionPressed("ui_left");
+        jump = Input.IsActionJustPressed("jump");
+        right = Input.IsActionPressed("move_right");
+        left = Input.IsActionPressed("move_left");
     }
 
     private async void WallJumpTimer(float time)
