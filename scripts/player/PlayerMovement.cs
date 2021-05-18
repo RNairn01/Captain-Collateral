@@ -43,6 +43,11 @@ public class PlayerMovement : Godot.KinematicBody2D
             Jump();
         }
         else anim.Animation = "idle";
+
+        if (!IsOnWall() && !IsOnFloor() && anim.Animation == "hang")
+        {
+            anim.Animation = "fall";
+        }
     }
 
     private bool jump;
@@ -81,6 +86,10 @@ public class PlayerMovement : Godot.KinematicBody2D
         {
             anim.Animation = "hang";
         }
+        else if (!IsOnWall() && anim.Animation == "hang")
+        {
+            anim.Animation = "fall";
+        }
     }
 
     private bool falling = false;
@@ -95,9 +104,8 @@ public class PlayerMovement : Godot.KinematicBody2D
         else onGround = false;
 
 
-        if (IsOnWall() && canStick && wallJumpCounter < 1)
+        if (IsOnWall() && canStick)
         {
-           GD.Print("On wall");
            jumpCounter = 0;
            velocity.y = 0;
            WallJumpTimer(WallJumpHangTime);

@@ -30,8 +30,8 @@ text = "mash left click to destroy the alien artifact!"
 texture = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel/Sprite" index="0"]
-position = Vector2( -73.5388, 52.0896 )
-scale = Vector2( 0.59946, 1.33494 )
+position = Vector2( -0.578613, 2.98193 )
+scale = Vector2( 1.00168, 0.937397 )
 frames = SubResource( 1 )
 
 [node name="Label2" type="Label" parent="Panel" index="3"]
