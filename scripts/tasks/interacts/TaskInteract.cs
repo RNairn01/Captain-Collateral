@@ -4,35 +4,35 @@ using System;
 public class TaskInteract : Node2D
 {
     private bool canInteract;
-    [Export] public BaseTaskPopup task;
-    private PackedScene testing;
+    [Export] public PackedScene task;
+    private PlayerMovement player;
     
     public override void _Ready()
     {
         canInteract = false;
-        testing = GD.Load<PackedScene>("res://world-entities/tasks/popups/BaseTaskPopup.tscn");
-        GD.Print(testing.Instance().Filename);
-        
+        task = GD.Load<PackedScene>(task.ResourcePath);
+      //  GD.Print(task.Instance().Filename + " 1");
+      //  GD.Print(task.ResourcePath + " 2");
     }
 
     public override void _Process(float delta)
     {
         if (canInteract && Input.IsActionJustPressed("interact"))
         {
-            GD.Print("interacted with task");
-            GetTree().Root.AddChild(testing.Instance());
+            GetTree().Root.AddChild(task.Instance());
+        //    GD.Print(this.Name);
         }
     }
 
     public void _on_Area2D_body_entered(PhysicsBody2D body)
     {
         canInteract = true;
-        GD.Print("entered");
+       // GD.Print(this.Name);
+       // GD.Print(GetTree().Root.GetChildren());
     }
     
     public void _on_Area2D_body_exited(PhysicsBody2D body)
     {
-        GD.Print("exited");
         canInteract = false;
     }
 }

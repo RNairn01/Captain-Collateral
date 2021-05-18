@@ -8,6 +8,7 @@ public class PlayerMovement : Godot.KinematicBody2D
     [Export] public float DefaultGravity = 500;
     [Export] public float WallJumpHangTime = 0.5f;
     public bool IsSweeping;
+    public bool InTask;
     
     private float currentGravity;
 
@@ -18,7 +19,6 @@ public class PlayerMovement : Godot.KinematicBody2D
 
     private AnimatedSprite anim;
     
-    // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         onGround = false;
@@ -34,10 +34,13 @@ public class PlayerMovement : Godot.KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-       velocity = MoveAndSlide(velocity, floorOrientation);
-       velocity.y += currentGravity;
-       Move();
-       Jump();
+        if (!InTask)
+        {
+            velocity = MoveAndSlide(velocity, floorOrientation);
+            velocity.y += currentGravity;
+            Move();
+            Jump();
+        }
     }
 
     private bool jump;

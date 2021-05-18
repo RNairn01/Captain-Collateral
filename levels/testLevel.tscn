@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://world-entities/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://world-entities/sweep-mess.tscn" type="PackedScene" id=3]
-[ext_resource path="res://world-entities/tasks/interacts/TaskInteract.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world-entities/tasks/interacts/NailInteract.tscn" type="PackedScene" id=4]
+[ext_resource path="res://world-entities/tasks/interacts/AlienInteract.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 499.43, 28.4415 )
@@ -50,8 +51,14 @@ position = Vector2( 719.81, 1052.42 )
 [node name="SweepMess2" parent="." instance=ExtResource( 3 )]
 position = Vector2( 981.357, 1050.93 )
 
-[node name="task-interact" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1206.83, 989.721 )
+[node name="NailInteract2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 412.381, 986.364 )
+
+[node name="NailInteract" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1125.01, 988.252 )
+
+[node name="AlienInteract" parent="." instance=ExtResource( 5 )]
+position = Vector2( 856.947, 984.476 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 585.432, 872.041 )
