@@ -42,7 +42,11 @@ public class PlayerMovement : Godot.KinematicBody2D
             Move();
             Jump();
         }
-        else anim.Animation = "idle";
+        else
+        {
+            anim.Animation = "idle";
+            velocity.x = 0;
+        }
 
         if (!IsOnWall() && !IsOnFloor() && anim.Animation == "hang")
         {
