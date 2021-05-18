@@ -34,13 +34,15 @@ public class PlayerMovement : Godot.KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
+        velocity.y += currentGravity;
+        velocity = MoveAndSlide(velocity, floorOrientation);
+
         if (!InTask)
         {
-            velocity = MoveAndSlide(velocity, floorOrientation);
-            velocity.y += currentGravity;
             Move();
             Jump();
         }
+        else anim.Animation = "idle";
     }
 
     private bool jump;
@@ -75,9 +77,13 @@ public class PlayerMovement : Godot.KinematicBody2D
         else if (IsOnFloor())
         {
             anim.Animation = "idle";
+        } else if (IsOnWall())
+        {
+            anim.Animation = "hang";
         }
     }
 
+    private bool falling = false;
     private void Jump()
     {
         if (IsOnFloor())
@@ -105,6 +111,7 @@ public class PlayerMovement : Godot.KinematicBody2D
         }
         if (jump && jumpCounter < 2)
         {
+            falling = false;
             velocity.y = JumpSpeed;
             AudioStreamPlayer jump;
             GD.Print(jumpCounter);
@@ -113,10 +120,14 @@ public class PlayerMovement : Godot.KinematicBody2D
                 case 0:
                     jump = GetChild<AudioStreamPlayer>(2);
                     anim.Animation = "jump1";
+                    falling = true;
+                    FallTimer(0.5f, "jump1");
                     break;
                 case 1:
                     jump = GetChild<AudioStreamPlayer>(3);
                     anim.Animation = "jump2";
+                    falling = true;
+                    FallTimer(0.5f, "jump2");
                     break;
                 default:
                     jump = new AudioStreamPlayer();
@@ -126,8 +137,6 @@ public class PlayerMovement : Godot.KinematicBody2D
             jumpCounter++;
             onGround = false;
         }
-
-        
     }
     private void GetInput()
     {
@@ -144,5 +153,15 @@ public class PlayerMovement : Godot.KinematicBody2D
         GD.Print("timer ended");
         currentGravity = DefaultGravity;
         canStick = true;
+    }
+    private async void FallTimer(float time, string currentJump)
+    {
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        if (!IsOnFloor() && !IsOnWall() && anim.Animation == currentJump && falling)
+        {
+            GD.Print("enteredFall");
+            anim.Animation = "fall";
+            falling = false;
+        }
     }
 }
