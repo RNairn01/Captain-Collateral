@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 147.611, 145.662 )
 
-[node name="tile" type="StaticBody2D"]
+[node name="tile-tall" type="StaticBody2D"]
 scale = Vector2( 0.5, 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
