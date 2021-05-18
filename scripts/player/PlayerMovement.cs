@@ -144,6 +144,5 @@ public class PlayerMovement : Godot.KinematicBody2D
         GD.Print("timer ended");
         currentGravity = DefaultGravity;
         canStick = true;
-
     }
 }

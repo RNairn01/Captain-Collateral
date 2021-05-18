@@ -3,37 +3,37 @@ using System;
 
 public class NailTask : BaseTaskPopup
 {
-    //private Label counter;
+    private Label counter;
+    private bool canStrike = true;
     
     public override void _Ready()
     {
-      //  counter = GetChild<Label>(2);
+        counter = GetNode<Label>("Panel/Label2");
         GD.Print("task loaded"); 
-        player = GetTree().Root.GetNode<PlayerMovement>("Node2D/player");
-        GD.Print(player.Name);
-        player.InTask = true;
     }
 
     protected override void PopupTask()
     {
-        if (Input.IsActionJustPressed("click"))
+        if (Input.IsActionJustPressed("click") && canStrike)
         {
-          //  counter.Text = (Int32.Parse(counter.Text) + 1).ToString();
+          counter.Text = (Int32.Parse(counter.Text) + 1).ToString();
+          canStrike = false;
+          StrikeTimer(1);
           GD.Print("nail click");
-          Visible = true;
         }
 
-        //if (Int32.Parse(counter.Text) >= 10)
-        //{
-         //   GD.Print("finished");
-           // player.InTask = false;
-           // QueueFree();
-        //}
+        if (Int32.Parse(counter.Text) >= 5)
+        {
+           GD.Print("finished");
+            player.InTask = false;
+            QueueFree();
+        }
     }
-
-//  // Called every frame. 'delta' is the elapsed time since the previous frame.
-//  public override void _Process(float delta)
-//  {
-//      
-//  }
+    private async void StrikeTimer(float time)
+    {
+        GD.Print("strike timer start"); 
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        canStrike = true;
+        GD.Print("strike timer end");
+    }
 }
