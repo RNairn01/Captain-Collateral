@@ -33,4 +33,9 @@ public class BaseTaskPopup : Control
             QueueFree();
         }
     }
+    protected async void DelayThenFree(float time)
+    {
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
+        QueueFree();
+    }
 }

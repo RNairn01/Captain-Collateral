@@ -76,7 +76,7 @@ animations = [ {
 "name": "idle",
 "speed": 14.0
 }, {
-"frames": [ ExtResource( 58 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 67 ) ],
+"frames": [ ExtResource( 58 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 67 ), ExtResource( 58 ) ],
 "loop": true,
 "name": "hang",
 "speed": 14.0
@@ -119,8 +119,8 @@ DefaultGravity = 200.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "jump2"
-frame = 7
+animation = "fall"
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

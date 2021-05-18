@@ -32,6 +32,8 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel"]
+
 [node name="Panel" type="Panel" parent="Panel"]
 modulate = Color( 1, 0, 0, 1 )
 anchor_left = 0.5

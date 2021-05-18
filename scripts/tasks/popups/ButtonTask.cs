@@ -5,9 +5,11 @@ using System.Collections.Generic;
 public class ButtonTask : BaseTaskPopup
 {
     private RandomNumberGenerator rng;
+    private AudioStreamPlayer buttonClick;
     public override void _Ready()
     {
         rng = new RandomNumberGenerator();
+        buttonClick = GetChild(0).GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         rng.Randomize();
         GetRandomButtonLabel().Text = "WIPE CCTV";
         RandomButtons();
@@ -93,11 +95,12 @@ public class ButtonTask : BaseTaskPopup
 
     private void ResolveButton(int index)
     {
+        buttonClick.Play();
         if (GetButton(index).GetChild<Label>(1).Text == "WIPE CCTV")
         {
             GD.Print("right button");
             player.InTask = false;
-            QueueFree();
+            DelayThenFree(0.5f);
         }
         else
         {

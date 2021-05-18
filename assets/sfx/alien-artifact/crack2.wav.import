@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/crack2.wav-6001bc592f1f1c503eec41f1423bbbcd.sample"
+
+[deps]
+
+source_file="res://assets/sfx/alien-artifact/crack2.wav"
+dest_files=[ "res://.import/crack2.wav-6001bc592f1f1c503eec41f1423bbbcd.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

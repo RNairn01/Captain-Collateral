@@ -26,7 +26,7 @@ public class AlienTask : BaseTaskPopup
         {
              GD.Print("finished");
              player.InTask = false;
-             QueueFree();
+             DelayThenFree(0.5f);
         }
     }
 }

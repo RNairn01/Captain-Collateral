@@ -48,7 +48,7 @@ public class PlayerMovement : Godot.KinematicBody2D
             velocity.x = 0;
         }
 
-        if (!IsOnWall() && !IsOnFloor() && anim.Animation == "hang")
+        if (!IsOnWall() && anim.Animation == "hang")
         {
             anim.Animation = "fall";
         }
@@ -58,7 +58,6 @@ public class PlayerMovement : Godot.KinematicBody2D
     private bool right;
     private bool left;
     private int jumpCounter = 0;
-    private int wallJumpCounter = 0;
     private void Move()
     {
         velocity.x = 0;
@@ -90,10 +89,6 @@ public class PlayerMovement : Godot.KinematicBody2D
         {
             anim.Animation = "hang";
         }
-        else if (!IsOnWall() && anim.Animation == "hang")
-        {
-            anim.Animation = "fall";
-        }
     }
 
     private bool falling = false;
@@ -103,7 +98,6 @@ public class PlayerMovement : Godot.KinematicBody2D
         {
             onGround = true;
             jumpCounter = 0;
-            wallJumpCounter = 0;
         }
         else onGround = false;
 
@@ -121,12 +115,12 @@ public class PlayerMovement : Godot.KinematicBody2D
         {
             currentGravity = DefaultGravity;
         }
+        
         if (jump && jumpCounter < 2)
         {
             falling = false;
             velocity.y = JumpSpeed;
             AudioStreamPlayer jump;
-            GD.Print(jumpCounter);
             switch (jumpCounter)
             {
                 case 0:
@@ -163,7 +157,10 @@ public class PlayerMovement : Godot.KinematicBody2D
         currentGravity = 0;
         await ToSignal(GetTree().CreateTimer(time), "timeout");
         GD.Print("timer ended");
-        currentGravity = DefaultGravity;
+        if (!IsOnWall())
+        {
+            currentGravity = DefaultGravity;
+        }
         canStick = true;
     }
     private async void FallTimer(float time, string currentJump)
@@ -171,7 +168,6 @@ public class PlayerMovement : Godot.KinematicBody2D
         await ToSignal(GetTree().CreateTimer(time), "timeout");
         if (!IsOnFloor() && !IsOnWall() && anim.Animation == currentJump && falling)
         {
-            GD.Print("enteredFall");
             anim.Animation = "fall";
             falling = false;
         }

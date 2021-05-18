@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://world-entities/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://world-entities/tasks/interacts/AlienInteract.tscn" type="PackedScene" id=5]
 [ext_resource path="res://world-entities/tasks/interacts/ButtonInteract.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/ui/game-background.png" type="Texture" id=7]
+[ext_resource path="res://world-entities/tiles/tile-basic.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 499.43, 28.4415 )
@@ -83,3 +84,6 @@ position = Vector2( 1383.51, 988.518 )
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 585.432, 872.041 )
 DefaultGravity = 20.0
+
+[node name="tile" parent="." instance=ExtResource( 8 )]
+position = Vector2( 800, 811.051 )
