@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://world-entities/tasks/interacts/TaskInteract.tscn" type="PackedScene" id=1]
+[ext_resource path="res://world-entities/tasks/popups/ScrubPopup.tscn" type="PackedScene" id=2]
+
+[node name="CarInteract" instance=ExtResource( 1 )]
+task = ExtResource( 2 )

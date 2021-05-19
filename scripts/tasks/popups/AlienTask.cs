@@ -18,7 +18,6 @@ public class AlienTask : BaseTaskPopup
     {
         if (Input.IsActionJustPressed("click"))
         { 
-            GD.Print(Int32.Parse(counter.Text) + 1);
             counter.Text = (Int32.Parse(counter.Text) + 1).ToString();
             anim.Frame++;
         }
