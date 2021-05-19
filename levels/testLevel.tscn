@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://icon.png" type="Texture" id=1]
 [ext_resource path="res://world-entities/player.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://world-entities/tiles/tile-basic.tscn" type="PackedScene" id=8]
 [ext_resource path="res://world-entities/GameManager.tscn" type="PackedScene" id=9]
 [ext_resource path="res://world-entities/tasks/interacts/CarInteract.tscn" type="PackedScene" id=10]
+[ext_resource path="res://world-entities/tasks/interacts/BusinessCardInteract.tscn" type="PackedScene" id=11]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 499.43, 28.4415 )
@@ -87,6 +88,9 @@ position = Vector2( 1383.51, 988.518 )
 
 [node name="CarInteract" parent="." instance=ExtResource( 10 )]
 position = Vector2( 184, 984.476 )
+
+[node name="BusinessCardInteract" parent="." instance=ExtResource( 11 )]
+position = Vector2( 1656, 984 )
 
 [node name="player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 585.432, 872.041 )

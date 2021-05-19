@@ -5,7 +5,7 @@
 [ext_resource path="res://world-entities/tiles/tile-tall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world-entities/tiles/tile-long.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scripts/world/GameManager.cs" type="Script" id=5]
-[ext_resource path="res://assets/ui/game-background.png" type="Texture" id=7]
+[ext_resource path="res://assets/ui/game-background2.png" type="Texture" id=6]
 [ext_resource path="res://world-entities/tiles/tile-basic.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
@@ -23,7 +23,7 @@ margin_top = -305.0
 margin_right = 2938.0
 margin_bottom = 1695.0
 rect_scale = Vector2( 0.7, 0.7 )
-texture = ExtResource( 7 )
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
