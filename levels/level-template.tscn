@@ -1,13 +1,17 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://world-entities/tiles/tile-arrow-right.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world-entities/player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://world-entities/tiles/tile-tall.tscn" type="PackedScene" id=3]
 [ext_resource path="res://world-entities/tiles/tile-long.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scripts/world/GameManager.cs" type="Script" id=5]
 [ext_resource path="res://assets/ui/game-background.png" type="Texture" id=7]
 [ext_resource path="res://world-entities/tiles/tile-basic.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource( 5 )
 
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_left = 0.5

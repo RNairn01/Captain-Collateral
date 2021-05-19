@@ -5,11 +5,12 @@ public class SweepMess : Node2D
 {
     private Area2D area;
     private PlayerMovement player;
+    private GameManager gameManager;
     public override void _Ready()
     {  
         player = GetNode<PlayerMovement>("../player");
-        GD.Print(player.Name);
         area = GetChild<Area2D>(1); 
+        gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
     }
 
     public override void _PhysicsProcess(float delta)
@@ -23,15 +24,11 @@ public class SweepMess : Node2D
         if (body.Name == "player" && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
-            GD.Print("yes");
             var children = GetChildren();
-            foreach (var child in children)
-            {
-               GD.Print(child.ToString()); 
-            }
             var sweep = GetChild<AudioStreamPlayer>(2);
-            GD.Print(sweep.Filename);
             sweep.Play();
+            gameManager.SweepDone++;
+            GD.Print(gameManager.SweepDone);
             player.IsSweeping = true;
             Visible = false;
             RemovalTimer(0.8f);
