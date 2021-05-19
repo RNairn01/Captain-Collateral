@@ -10,10 +10,6 @@
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
-[node name="GameManager" parent="." index="0"]
-sweepInLevel = 3
-taskInLevel = 1
-
 [node name="AlienInteract" parent="." index="2" instance=ExtResource( 7 )]
 position = Vector2( 648, 433 )
 
