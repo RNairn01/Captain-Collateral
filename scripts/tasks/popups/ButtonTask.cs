@@ -6,10 +6,12 @@ public class ButtonTask : BaseTaskPopup
 {
     private RandomNumberGenerator rng;
     private AudioStreamPlayer buttonClick;
+    private GameManager gameManager;
     public override void _Ready()
     {
         rng = new RandomNumberGenerator();
         buttonClick = GetChild(0).GetNode<AudioStreamPlayer>("AudioStreamPlayer");
+        gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
         rng.Randomize();
         GetRandomButtonLabel().Text = "WIPE CCTV";
         RandomButtons();
@@ -99,7 +101,7 @@ public class ButtonTask : BaseTaskPopup
         if (GetButton(index).GetChild<Label>(1).Text == "WIPE CCTV")
         {
             GD.Print("right button");
-            player.InTask = false;
+            gameManager.TaskDone++;
             DelayThenFree(0.5f);
         }
         else

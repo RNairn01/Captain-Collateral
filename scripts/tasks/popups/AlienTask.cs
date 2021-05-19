@@ -25,7 +25,6 @@ public class AlienTask : BaseTaskPopup
 
         if (Int32.Parse(counter.Text) >= 8)
         {
-             player.InTask = false;
              gameManager.TaskDone++;
              DelayThenFree(0.5f);
         }

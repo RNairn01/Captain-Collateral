@@ -6,21 +6,27 @@ public class CarTask : BaseTaskPopup
     private AnimatedSprite car;
     private HSlider slider;
     private int oldValue = 0;
+    private bool taskComplete = false;
+    private GameManager gameManager;
     
     public override void _Ready()
     {
         GD.Print("task loaded"); 
         car = GetNode<AnimatedSprite>("Panel/Sprite/AnimatedSprite");
         slider = GetNode<HSlider>("Panel/Sprite/HSlider");
+        gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
     }
 
     protected override void PopupTask()
     {
         HandleSlider();
-    }
-    private async void StrikeTimer(float time)
-    {
-        await ToSignal(GetTree().CreateTimer(time), "timeout");
+
+        if (!taskComplete && slider.Value == slider.MaxValue)
+        {
+            taskComplete = true;
+            gameManager.TaskDone++;
+            DelayThenFree(0.5f);
+        }
     }
 
     private void HandleSlider()
@@ -36,7 +42,6 @@ public class CarTask : BaseTaskPopup
         {
             oldValue = value;
         }
-
         car.Frame = oldValue;
     }
 }
