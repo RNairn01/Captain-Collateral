@@ -4,6 +4,7 @@ using System;
 public class BaseTaskPopup : Control
 {
     protected PlayerMovement player;
+    protected bool isTaskComplete = false;
     public override void _Ready()
     {
        player = GetTree().Root.GetNode<PlayerMovement>("Node2D/player");

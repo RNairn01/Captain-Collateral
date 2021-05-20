@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://world-entities/tasks/popups/BaseTaskPopup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tasks/card-task/Business_Cards-1.png" type="Texture" id=2]
@@ -8,6 +8,18 @@
 [ext_resource path="res://assets/tasks/card-task/Business_Cards-2.png" type="Texture" id=6]
 [ext_resource path="res://world-entities/tasks/BusinessCard.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/tasks/popups/BusinessCardTask.cs" type="Script" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 230.622, 248.418 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 154.661, 201.415 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 258.683, 307.075 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 224.607, 300.39 )
 
 [node name="BasePopup" instance=ExtResource( 1 )]
 mouse_filter = 2
@@ -28,24 +40,51 @@ texture = ExtResource( 2 )
 [node name="People" type="Node" parent="Panel/Sprite" index="0"]
 
 [node name="Person1" type="Sprite" parent="Panel/Sprite/People" index="0"]
-position = Vector2( 975.763, 612.439 )
+position = Vector2( 979.471, 598.137 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
+[node name="Person1Area" type="Area2D" parent="Panel/Sprite/People/Person1" index="0"]
+position = Vector2( -421.5, 27.3291 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/People/Person1/Person1Area" index="0"]
+position = Vector2( 0.278076, -0.92627 )
+shape = SubResource( 1 )
+
 [node name="Person2" type="Sprite" parent="Panel/Sprite/People" index="1"]
-position = Vector2( 954.998, 629.901 )
+position = Vector2( 952.349, 616.658 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 
+[node name="Person2Area" type="Area2D" parent="Panel/Sprite/People/Person2" index="0"]
+position = Vector2( 442.326, -60.9192 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/People/Person2/Person2Area" index="0"]
+position = Vector2( 13.6646, -3.15308 )
+shape = SubResource( 2 )
+
 [node name="Person3" type="Sprite" parent="Panel/Sprite/People" index="2"]
-position = Vector2( 925.266, 619.046 )
+position = Vector2( 916.79, 611.1 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
+[node name="Person3Area" type="Area2D" parent="Panel/Sprite/People/Person3" index="0"]
+position = Vector2( -985.951, 60.9651 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/People/Person3/Person3Area" index="0"]
+shape = SubResource( 3 )
+
 [node name="Person4" type="Sprite" parent="Panel/Sprite/People" index="3"]
-position = Vector2( 962.077, 630.373 )
+position = Vector2( 975.32, 616.07 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
+
+[node name="Person4Area" type="Area2D" parent="Panel/Sprite/People/Person4" index="0"]
+position = Vector2( 1101.58, -77.7827 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/People/Person4/Person4Area" index="0"]
+position = Vector2( 2.10254, 85.1406 )
+shape = SubResource( 4 )
 
 [node name="Cards" type="Node" parent="Panel/Sprite" index="1"]
 
@@ -60,3 +99,8 @@ position = Vector2( 955.473, 865.398 )
 
 [node name="Card4" parent="Panel/Sprite/Cards" index="3" instance=ExtResource( 7 )]
 position = Vector2( 887.986, 864.926 )
+
+[connection signal="area_entered" from="Panel/Sprite/People/Person1/Person1Area" to="." method="_on_Person1Area_area_entered"]
+[connection signal="area_entered" from="Panel/Sprite/People/Person2/Person2Area" to="." method="_on_Person2Area_area_entered"]
+[connection signal="area_entered" from="Panel/Sprite/People/Person3/Person3Area" to="." method="_on_Person3Area_area_entered"]
+[connection signal="area_entered" from="Panel/Sprite/People/Person4/Person4Area" to="." method="_on_Person4Area_area_entered"]

@@ -22,8 +22,9 @@ public class AlienTask : BaseTaskPopup
             anim.Frame++;
         }
 
-        if (Int32.Parse(counter.Text) >= 8)
+        if (!isTaskComplete && Int32.Parse(counter.Text) >= 8)
         {
+             isTaskComplete = true;
              gameManager.TaskDone++;
              DelayThenFree(0.5f);
         }

@@ -98,8 +98,9 @@ public class ButtonTask : BaseTaskPopup
     private void ResolveButton(int index)
     {
         buttonClick.Play();
-        if (GetButton(index).GetChild<Label>(1).Text == "WIPE CCTV")
+        if (!isTaskComplete && GetButton(index).GetChild<Label>(1).Text == "WIPE CCTV")
         {
+            isTaskComplete = true;
             GD.Print("right button");
             gameManager.TaskDone++;
             DelayThenFree(0.5f);

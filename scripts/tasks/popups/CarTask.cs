@@ -6,7 +6,6 @@ public class CarTask : BaseTaskPopup
     private AnimatedSprite car;
     private HSlider slider;
     private int oldValue = 0;
-    private bool taskComplete = false;
     private GameManager gameManager;
     
     public override void _Ready()
@@ -21,9 +20,9 @@ public class CarTask : BaseTaskPopup
     {
         HandleSlider();
 
-        if (!taskComplete && slider.Value == slider.MaxValue)
+        if (!isTaskComplete && slider.Value == slider.MaxValue)
         {
-            taskComplete = true;
+            isTaskComplete = true;
             gameManager.TaskDone++;
             DelayThenFree(0.5f);
         }
