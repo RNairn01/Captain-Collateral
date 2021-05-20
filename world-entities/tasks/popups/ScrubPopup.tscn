@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-3.png" type="Texture" id=2]
@@ -6,11 +6,21 @@
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-2.png" type="Texture" id=4]
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-4.png" type="Texture" id=5]
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-5.png" type="Texture" id=6]
-[ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-6.png" type="Texture" id=7]
+[ext_resource path="res://world-entities/tasks/Sponge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/tasks/popups/ScrubTask.cs" type="Script" id=8]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 234.562, 1542.31 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 245.285, 1538.48 )
+
 [node name="BasePopup" instance=ExtResource( 3 )]
+mouse_filter = 2
 script = ExtResource( 8 )
+
+[node name="Panel" parent="." index="0"]
+mouse_filter = 2
 
 [node name="Label" parent="Panel" index="2"]
 text = "scrub the stains!"
@@ -30,6 +40,21 @@ texture = ExtResource( 5 )
 [node name="Scrub4" type="Sprite" parent="Panel/Sprite" index="3"]
 texture = ExtResource( 6 )
 
-[node name="Sponge" type="Sprite" parent="Panel/Sprite" index="4"]
-scale = Vector2( 0.5, 0.5 )
-texture = ExtResource( 7 )
+[node name="Sponge" parent="Panel/Sprite" index="4" instance=ExtResource( 7 )]
+
+[node name="ZoneLeft" type="Area2D" parent="Panel/Sprite" index="5"]
+position = Vector2( -1422.5, 54.9998 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/ZoneLeft" index="0"]
+position = Vector2( 158.919, -92.7029 )
+shape = SubResource( 2 )
+
+[node name="ZoneRight" type="Area2D" parent="Panel/Sprite" index="6"]
+position = Vector2( 1425.07, -82.9714 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/ZoneRight" index="0"]
+position = Vector2( -157.49, 40.9478 )
+shape = SubResource( 3 )
+
+[connection signal="area_entered" from="Panel/Sprite/ZoneLeft" to="." method="_on_ZoneLeft_area_entered"]
+[connection signal="area_entered" from="Panel/Sprite/ZoneRight" to="." method="_on_ZoneRight_area_entered"]
