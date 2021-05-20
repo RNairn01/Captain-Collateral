@@ -14,7 +14,7 @@ public class BusinessCard : Sprite
     {
         if (isSelected)
         {
-            GlobalPosition = Lerp(GlobalPosition, GetGlobalMousePosition(), 25 * delta);
+            GlobalPosition = Lerp(GlobalPosition, GetGlobalMousePosition(), 50 * delta);
         }
     }
 

@@ -6,9 +6,7 @@ public class ScrubTask : BaseTaskPopup
     private GameManager gameManager;
     private int totalStains;
     private int stainsCleaned;
-    private int scrubLeftCount;
     private bool hasLeftBeenScrubbed;
-    private int scrubRightCount;
     private int totalStainsScrubbed;
     private bool hasRightBeenScrubbed;
     private Sponge sponge;
@@ -19,9 +17,7 @@ public class ScrubTask : BaseTaskPopup
     {
         GD.Print("task loaded"); 
         gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
-        scrubLeftCount = 0;
         hasLeftBeenScrubbed = false;
-        scrubRightCount = 0;
         hasRightBeenScrubbed = false;
         totalStainsScrubbed = 0;
         sponge = GetNode<Sponge>("Panel/Sprite/Sponge");
@@ -52,7 +48,6 @@ public class ScrubTask : BaseTaskPopup
         if (!hasLeftBeenScrubbed && area.GetParent().Name == sponge.Name)
         {
             hasLeftBeenScrubbed = true;
-            GD.Print("left scrubbed");
         } 
     }
     
@@ -61,7 +56,6 @@ public class ScrubTask : BaseTaskPopup
         if (!hasRightBeenScrubbed && area.GetParent().Name == sponge.Name)
         {
             hasRightBeenScrubbed = true;
-            GD.Print("right scrubbed");
         } 
     }
 

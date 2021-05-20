@@ -89,16 +89,16 @@ shape = SubResource( 4 )
 [node name="Cards" type="Node" parent="Panel/Sprite" index="1"]
 
 [node name="Card1" parent="Panel/Sprite/Cards" index="0" instance=ExtResource( 7 )]
-position = Vector2( 1047.03, 867.285 )
+position = Vector2( 1107.15, 867.285 )
 
 [node name="Card2" parent="Panel/Sprite/Cards" index="1" instance=ExtResource( 7 )]
-position = Vector2( 1002.67, 865.87 )
+position = Vector2( 1018.65, 867.131 )
 
 [node name="Card3" parent="Panel/Sprite/Cards" index="2" instance=ExtResource( 7 )]
-position = Vector2( 955.473, 865.398 )
+position = Vector2( 940.757, 868.762 )
 
 [node name="Card4" parent="Panel/Sprite/Cards" index="3" instance=ExtResource( 7 )]
-position = Vector2( 887.986, 864.926 )
+position = Vector2( 850.146, 869.551 )
 
 [connection signal="area_entered" from="Panel/Sprite/People/Person1/Person1Area" to="." method="_on_Person1Area_area_entered"]
 [connection signal="area_entered" from="Panel/Sprite/People/Person2/Person2Area" to="." method="_on_Person2Area_area_entered"]
