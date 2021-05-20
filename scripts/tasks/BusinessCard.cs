@@ -23,6 +23,7 @@ public class BusinessCard : Sprite
         if (!businessCardTask.isHoldingCard && Input.IsActionPressed("click"))
         {
             isSelected = true;
+            businessCardTask.pickUpCard.Play();
             businessCardTask.isHoldingCard = true;
         }
         else

@@ -33,13 +33,16 @@ extents = Vector2( 239.272, 406.823 )
 extents = Vector2( 154.317, 262.322 )
 
 [node name="BasePopup" instance=ExtResource( 1 )]
+margin_top = -0.374573
+margin_bottom = -0.374512
 script = ExtResource( 3 )
 
 [node name="Label" parent="Panel" index="2"]
 text = "Fix the store front!"
 
 [node name="Sprite" parent="Panel" index="3"]
-position = Vector2( 297.935, 342.578 )
+position = Vector2( 297.362, 338.918 )
+scale = Vector2( 0.197837, 0.198508 )
 texture = ExtResource( 2 )
 
 [node name="ActionFigureArea" type="Area2D" parent="Panel/Sprite" index="0"]
@@ -68,48 +71,59 @@ position = Vector2( 1006.01, -793.701 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/HeadArea" index="0"]
 shape = SubResource( 4 )
 
-[node name="Dragables" type="Node" parent="Panel/Sprite" index="4"]
+[node name="Draggables" type="Node" parent="Panel/Sprite" index="4"]
 
-[node name="ActionFigure" type="Sprite" parent="Panel/Sprite/Dragables" index="0"]
+[node name="ActionFigure" type="Sprite" parent="Panel/Sprite/Draggables" index="0"]
 position = Vector2( 1114.56, 855.562 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/ActionFigure" index="0"]
+[node name="FigureArea" type="Area2D" parent="Panel/Sprite/Draggables/ActionFigure" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/ActionFigure/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Draggables/ActionFigure/FigureArea" index="0"]
 shape = SubResource( 5 )
 
-[node name="Planet" type="Sprite" parent="Panel/Sprite/Dragables" index="1"]
+[node name="Planet" type="Sprite" parent="Panel/Sprite/Draggables" index="1"]
 position = Vector2( 963.234, 895.47 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 5 )
 
-[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Planet" index="0"]
+[node name="PlanetArea" type="Area2D" parent="Panel/Sprite/Draggables/Planet" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Planet/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Draggables/Planet/PlanetArea" index="0"]
 shape = SubResource( 6 )
 
-[node name="Shirt" type="Sprite" parent="Panel/Sprite/Dragables" index="2"]
+[node name="Shirt" type="Sprite" parent="Panel/Sprite/Draggables" index="2"]
 position = Vector2( 738.329, 837.011 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 7 )
 
-[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Shirt" index="0"]
+[node name="ShirtArea" type="Area2D" parent="Panel/Sprite/Draggables/Shirt" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Shirt/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Draggables/Shirt/ShirtArea" index="0"]
 position = Vector2( -13.3865, 40.9478 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 7 )
 
-[node name="Head" type="Sprite" parent="Panel/Sprite/Dragables" index="3"]
+[node name="Head" type="Sprite" parent="Panel/Sprite/Draggables" index="3"]
 position = Vector2( 1216.65, 863.645 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 6 )
 
-[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Head" index="0"]
+[node name="HeadArea" type="Area2D" parent="Panel/Sprite/Draggables/Head" index="0"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Head/Area2D" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Draggables/Head/HeadArea" index="0"]
 position = Vector2( -5.61914, 13.1865 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 8 )
+
+[connection signal="area_entered" from="Panel/Sprite/ActionFigureArea" to="." method="_on_ActionFigureArea_area_entered"]
+[connection signal="area_exited" from="Panel/Sprite/ActionFigureArea" to="." method="_on_ActionFigureArea_area_exited"]
+[connection signal="area_entered" from="Panel/Sprite/PlanetArea" to="." method="_on_PlanetArea_area_entered"]
+[connection signal="area_exited" from="Panel/Sprite/PlanetArea" to="." method="_on_PlanetArea_area_exited"]
+[connection signal="area_entered" from="Panel/Sprite/ShirtArea" to="." method="_on_ShirtArea_area_entered"]
+[connection signal="area_exited" from="Panel/Sprite/ShirtArea" to="." method="_on_ShirtArea_area_exited"]
+[connection signal="area_entered" from="Panel/Sprite/HeadArea" to="." method="_on_HeadArea_area_entered"]
+[connection signal="area_exited" from="Panel/Sprite/HeadArea" to="." method="_on_HeadArea_area_exited"]
+[connection signal="input_event" from="Panel/Sprite/Draggables/ActionFigure/FigureArea" to="." method="_on_FigureArea_input_event"]
+[connection signal="input_event" from="Panel/Sprite/Draggables/Planet/PlanetArea" to="." method="_on_PlanetArea_input_event"]
+[connection signal="input_event" from="Panel/Sprite/Draggables/Shirt/ShirtArea" to="." method="_on_ShirtArea_input_event"]
+[connection signal="input_event" from="Panel/Sprite/Draggables/Head/HeadArea" to="." method="_on_HeadArea_input_event"]

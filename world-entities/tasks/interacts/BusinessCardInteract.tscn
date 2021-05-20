@@ -21,5 +21,16 @@ texture = ExtResource( 3 )
 position = Vector2( 0, 16 )
 shape = SubResource( 1 )
 
+[node name="InteractButton" parent="." index="2"]
+position = Vector2( 16, -192 )
+scale = Vector2( 0.236907, 0.220566 )
+frame = 1
+
+[node name="Label" parent="InteractButton" index="0"]
+margin_left = -77.0402
+margin_top = -45.5216
+margin_right = 126.96
+margin_bottom = 201.478
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

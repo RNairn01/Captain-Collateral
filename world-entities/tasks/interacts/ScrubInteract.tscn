@@ -20,5 +20,16 @@ texture = ExtResource( 3 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 shape = SubResource( 1 )
 
+[node name="InteractButton" parent="." index="2"]
+position = Vector2( -78, -134 )
+scale = Vector2( 0.192907, 0.198566 )
+frame = 0
+
+[node name="Label" parent="InteractButton" index="0"]
+margin_left = -82.9415
+margin_top = -40.2888
+margin_right = 121.059
+margin_bottom = 206.711
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

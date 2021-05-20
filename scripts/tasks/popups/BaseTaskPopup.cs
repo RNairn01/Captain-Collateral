@@ -36,6 +36,7 @@ public class BaseTaskPopup : Control
     protected async void DelayThenFree(float time)
     {
         player.InTask = false;
+        await ToSignal(GetTree().CreateTimer(time), "timeout");
         successSound.Play();
         await ToSignal(GetTree().CreateTimer(time), "timeout");
         QueueFree();

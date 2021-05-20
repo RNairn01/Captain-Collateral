@@ -29,9 +29,13 @@ script = ExtResource( 3 )
 text = "flip the car!"
 
 [node name="Sprite" parent="Panel" index="3"]
+position = Vector2( 297.784, 340.365 )
+scale = Vector2( 0.197578, 0.199214 )
 texture = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel/Sprite" index="0"]
+position = Vector2( -3.0553, 6.5806 )
+scale = Vector2( 0.999382, 0.995613 )
 frames = SubResource( 1 )
 
 [node name="HSlider" type="HSlider" parent="Panel/Sprite" index="1"]

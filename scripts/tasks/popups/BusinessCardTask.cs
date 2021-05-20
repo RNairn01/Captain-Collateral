@@ -7,6 +7,7 @@ public class BusinessCardTask : BaseTaskPopup
     private int cardsRequired;
     private int cardsHanded;
     public bool isHoldingCard;
+    public AudioStreamPlayer pickUpCard, handCard;
     
     public override void _Ready()
     {
@@ -14,6 +15,8 @@ public class BusinessCardTask : BaseTaskPopup
         cardsRequired = 4;
         cardsHanded = 0;
         isHoldingCard = false;
+        pickUpCard = GetNode<AudioStreamPlayer>("Panel/PickUpCard");
+        handCard = GetNode<AudioStreamPlayer>("Panel/HandCard");
     }
 
     protected override void PopupTask()
@@ -29,6 +32,7 @@ public class BusinessCardTask : BaseTaskPopup
     public void _on_Person1Area_area_entered(Area2D area)
     {
        area.GetParent().QueueFree();
+       handCard.Play();
        GetNode("Panel/Sprite/People/Person1").QueueFree();
        cardsHanded++;
     }

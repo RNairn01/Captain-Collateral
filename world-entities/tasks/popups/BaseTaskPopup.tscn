@@ -35,8 +35,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Panel"]
-
 [node name="SuccessSound" type="AudioStreamPlayer" parent="Panel"]
 stream = ExtResource( 4 )
 volume_db = -10.0
@@ -46,17 +44,18 @@ pitch_scale = 0.9
 modulate = Color( 1, 0, 0, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -296.5
-margin_right = 303.5
-margin_bottom = 43.0
+margin_left = -297.5
+margin_top = -1.0
+margin_right = 297.5
+margin_bottom = 42.0
 mouse_filter = 2
 
 [node name="Label" type="Label" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -275.342
+margin_left = -275.607
 margin_top = -2.83163
-margin_right = 278.658
+margin_right = 278.393
 margin_bottom = 44.1684
 custom_fonts/font = SubResource( 1 )
 text = "Task Name and Instructions"
