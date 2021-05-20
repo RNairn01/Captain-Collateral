@@ -14,7 +14,7 @@ public class BusinessCard : Sprite
     {
         if (isSelected)
         {
-            GlobalPosition = Lerp(GlobalPosition, GetGlobalMousePosition(), 50 * delta);
+            GlobalPosition = businessCardTask.Lerp(GlobalPosition, GetGlobalMousePosition(), 50 * delta);
         }
     }
 
@@ -32,16 +32,4 @@ public class BusinessCard : Sprite
         }
     }
    
-    // In theory I will come back and put this somewhere more sensible, in practice?
-    private float Lerp(float firstFloat, float secondFloat, float by)
-    {
-        return firstFloat * (1 - by) + secondFloat * by;
-    }
-    
-    private Vector2 Lerp(Vector2 firstVector, Vector2 secondVector, float by)
-    {
-        float retX = Lerp(firstVector.x, secondVector.x, by);
-        float retY = Lerp(firstVector.y, secondVector.y, by);
-        return new Vector2(retX, retY);
-    }
 }

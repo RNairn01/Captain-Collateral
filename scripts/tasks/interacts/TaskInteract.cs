@@ -9,8 +9,8 @@ public class TaskInteract : Node2D
     
     public override void _Ready()
     {
-        canInteract = false;
         task = GD.Load<PackedScene>(task.ResourcePath);
+        canInteract = false;
     }
 
     public override void _Process(float delta)
@@ -23,7 +23,10 @@ public class TaskInteract : Node2D
 
     public void _on_Area2D_body_entered(PhysicsBody2D body)
     {
-        canInteract = true;
+        if (body.Name == "player")
+        {
+            canInteract = true;
+        }
     }
     
     public void _on_Area2D_body_exited(PhysicsBody2D body)

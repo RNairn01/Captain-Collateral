@@ -1,0 +1,115 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://world-entities/tasks/popups/BaseTaskPopup.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/tasks/shop-task/Shop_Front-1.png" type="Texture" id=2]
+[ext_resource path="res://scripts/tasks/popups/ShopTask.cs" type="Script" id=3]
+[ext_resource path="res://assets/tasks/shop-task/shop-action-figure.png" type="Texture" id=4]
+[ext_resource path="res://assets/tasks/shop-task/shop-planet.png" type="Texture" id=5]
+[ext_resource path="res://assets/tasks/shop-task/shop-head.png" type="Texture" id=6]
+[ext_resource path="res://assets/tasks/shop-task/shop-shirt.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 183.658, 214.525 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 166.537, 179.41 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 246.946, 401.011 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 196.875, 303.274 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 144.91, 199.286 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 149.35, 162.649 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 239.272, 406.823 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 154.317, 262.322 )
+
+[node name="BasePopup" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+
+[node name="Label" parent="Panel" index="2"]
+text = "Fix the store front!"
+
+[node name="Sprite" parent="Panel" index="3"]
+position = Vector2( 297.935, 342.578 )
+texture = ExtResource( 2 )
+
+[node name="ActionFigureArea" type="Area2D" parent="Panel/Sprite" index="0"]
+position = Vector2( -886.96, 132.945 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/ActionFigureArea" index="0"]
+position = Vector2( -21.8269, 1.98413 )
+shape = SubResource( 1 )
+
+[node name="PlanetArea" type="Area2D" parent="Panel/Sprite" index="1"]
+position = Vector2( -337.323, -307.559 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/PlanetArea" index="0"]
+shape = SubResource( 2 )
+
+[node name="ShirtArea" type="Area2D" parent="Panel/Sprite" index="2"]
+position = Vector2( 349.228, 369.071 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/ShirtArea" index="0"]
+position = Vector2( -18.1123, -166.152 )
+shape = SubResource( 3 )
+
+[node name="HeadArea" type="Area2D" parent="Panel/Sprite" index="3"]
+position = Vector2( 1006.01, -793.701 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/HeadArea" index="0"]
+shape = SubResource( 4 )
+
+[node name="Dragables" type="Node" parent="Panel/Sprite" index="4"]
+
+[node name="ActionFigure" type="Sprite" parent="Panel/Sprite/Dragables" index="0"]
+position = Vector2( 1114.56, 855.562 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 4 )
+
+[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/ActionFigure" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/ActionFigure/Area2D" index="0"]
+shape = SubResource( 5 )
+
+[node name="Planet" type="Sprite" parent="Panel/Sprite/Dragables" index="1"]
+position = Vector2( 963.234, 895.47 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Planet" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Planet/Area2D" index="0"]
+shape = SubResource( 6 )
+
+[node name="Shirt" type="Sprite" parent="Panel/Sprite/Dragables" index="2"]
+position = Vector2( 738.329, 837.011 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 7 )
+
+[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Shirt" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Shirt/Area2D" index="0"]
+position = Vector2( -13.3865, 40.9478 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 7 )
+
+[node name="Head" type="Sprite" parent="Panel/Sprite/Dragables" index="3"]
+position = Vector2( 1216.65, 863.645 )
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="Panel/Sprite/Dragables/Head" index="0"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Panel/Sprite/Dragables/Head/Area2D" index="0"]
+position = Vector2( -5.61914, 13.1865 )
+scale = Vector2( 1, 1 )
+shape = SubResource( 8 )

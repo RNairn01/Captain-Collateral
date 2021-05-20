@@ -7,14 +7,15 @@ public class Sponge : Sprite
     private ScrubTask scrubTask;
     public override void _Ready()
     {
-        scrubTask = GetTree().Root.GetNode<ScrubTask>("BasePopup");
+        GD.Print(GetTree().Root.GetChildren());
+        scrubTask = GetTree().Root.GetNode<ScrubTask>("ScrubPopup");
     }
 
     public override void _Process(float delta)
     {
         if (isSelected)
         {
-            GlobalPosition = Lerp(GlobalPosition, GetGlobalMousePosition(), 25 * delta);
+            GlobalPosition = scrubTask.Lerp(GlobalPosition, GetGlobalMousePosition(), 25 * delta);
         }
     }
 
@@ -28,18 +29,5 @@ public class Sponge : Sprite
         {
             isSelected = false;
         }
-    }
-   
-    // In theory I will come back and put this somewhere more sensible, in practice?
-    private float Lerp(float firstFloat, float secondFloat, float by)
-    {
-        return firstFloat * (1 - by) + secondFloat * by;
-    }
-    
-    private Vector2 Lerp(Vector2 firstVector, Vector2 secondVector, float by)
-    {
-        float retX = Lerp(firstVector.x, secondVector.x, by);
-        float retY = Lerp(firstVector.y, secondVector.y, by);
-        return new Vector2(retX, retY);
     }
 }

@@ -4,6 +4,7 @@ using System;
 public class BaseTaskPopup : Control
 {
     protected PlayerMovement player;
+    protected AudioStreamPlayer successSound;
     protected bool isTaskComplete = false;
     public override void _Ready()
     {
@@ -14,6 +15,7 @@ public class BaseTaskPopup : Control
     public override void _EnterTree()
     {
        player = GetTree().Root.GetNode<PlayerMovement>("Node2D/player");
+       successSound = GetNode<AudioStreamPlayer>("Panel/SuccessSound");
        player.InTask = true;
     }
 
@@ -34,7 +36,21 @@ public class BaseTaskPopup : Control
     protected async void DelayThenFree(float time)
     {
         player.InTask = false;
+        successSound.Play();
         await ToSignal(GetTree().CreateTimer(time), "timeout");
         QueueFree();
     }
+    
+    private float Lerp(float firstFloat, float secondFloat, float by)
+    {
+        return firstFloat * (1 - by) + secondFloat * by;
+    }
+    
+    public Vector2 Lerp(Vector2 firstVector, Vector2 secondVector, float by)
+    {
+        float retX = Lerp(firstVector.x, secondVector.x, by);
+        float retY = Lerp(firstVector.y, secondVector.y, by);
+        return new Vector2(retX, retY);
+    }
+    
 }

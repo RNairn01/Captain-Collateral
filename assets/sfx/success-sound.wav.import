@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/success-sound.wav-bcf8e5da2a78033e9c83e8dedcd97073.sample"
+
+[deps]
+
+source_file="res://assets/sfx/success-sound.wav"
+dest_files=[ "res://.import/success-sound.wav-bcf8e5da2a78033e9c83e8dedcd97073.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
