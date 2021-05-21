@@ -74,9 +74,12 @@ shape = SubResource( 4 )
 [node name="Draggables" type="Node" parent="Panel/Sprite" index="4"]
 
 [node name="ActionFigure" type="Sprite" parent="Panel/Sprite/Draggables" index="0"]
-position = Vector2( 1114.56, 855.562 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 1155.88, 935.552 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 4 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="FigureArea" type="Area2D" parent="Panel/Sprite/Draggables/ActionFigure" index="0"]
 
@@ -84,9 +87,12 @@ texture = ExtResource( 4 )
 shape = SubResource( 5 )
 
 [node name="Planet" type="Sprite" parent="Panel/Sprite/Draggables" index="1"]
-position = Vector2( 963.234, 895.47 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 974.888, 953.211 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 5 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="PlanetArea" type="Area2D" parent="Panel/Sprite/Draggables/Planet" index="0"]
 
@@ -94,8 +100,8 @@ texture = ExtResource( 5 )
 shape = SubResource( 6 )
 
 [node name="Shirt" type="Sprite" parent="Panel/Sprite/Draggables" index="2"]
-position = Vector2( 738.329, 837.011 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 699.129, 875.152 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 7 )
 
 [node name="ShirtArea" type="Area2D" parent="Panel/Sprite/Draggables/Shirt" index="0"]
@@ -105,8 +111,8 @@ position = Vector2( -13.3865, 40.9478 )
 shape = SubResource( 7 )
 
 [node name="Head" type="Sprite" parent="Panel/Sprite/Draggables" index="3"]
-position = Vector2( 1216.65, 863.645 )
-scale = Vector2( 0.2, 0.2 )
+position = Vector2( 1370.27, 916.088 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 6 )
 
 [node name="HeadArea" type="Area2D" parent="Panel/Sprite/Draggables/Head" index="0"]
