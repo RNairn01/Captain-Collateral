@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://world-entities/tiles/tile-arrow-right.tscn" type="PackedScene" id=1]
 [ext_resource path="res://world-entities/player.tscn" type="PackedScene" id=2]
@@ -7,6 +7,9 @@
 [ext_resource path="res://scripts/world/GameManager.cs" type="Script" id=5]
 [ext_resource path="res://assets/ui/game-background2.png" type="Texture" id=6]
 [ext_resource path="res://world-entities/tiles/tile-basic.tscn" type="PackedScene" id=8]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 2399, 82 )
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,13 +26,14 @@ margin_top = -305.0
 margin_right = 2938.0
 margin_bottom = 1695.0
 rect_scale = Vector2( 0.7, 0.7 )
+mouse_filter = 2
 texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 72.0001, 837 )
+position = Vector2( 73, 887 )
 DefaultGravity = 20.0
 
 [node name="Tiles" type="Node" parent="."]
@@ -90,3 +94,13 @@ position = Vector2( 1865, 1150 )
 
 [node name="floor14" parent="Tiles" instance=ExtResource( 8 )]
 position = Vector2( 2012, 1150 )
+
+[node name="PlayerCatcher" type="Area2D" parent="."]
+position = Vector2( 975, 1308 )
+input_pickable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerCatcher"]
+position = Vector2( 0, -115 )
+shape = SubResource( 1 )
+
+[connection signal="body_entered" from="PlayerCatcher" to="player" method="_on_PlayerCatcher_body_entered"]

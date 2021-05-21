@@ -23,7 +23,6 @@ shape = SubResource( 1 )
 [node name="InteractButton" parent="." index="2"]
 position = Vector2( 127.51, -186.359 )
 scale = Vector2( 0.255509, 0.228812 )
-frame = 1
 
 [node name="Label" parent="InteractButton" index="0"]
 margin_left = -82.1916

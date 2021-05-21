@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-1.png" type="Texture" id=1]
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-3.png" type="Texture" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://assets/tasks/scrub-task/Scrub_Dirt-5.png" type="Texture" id=6]
 [ext_resource path="res://world-entities/tasks/Sponge.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scripts/tasks/popups/ScrubTask.cs" type="Script" id=8]
+[ext_resource path="res://assets/sfx/sponge-left.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/sfx/sponge-right.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 234.562, 1542.31 )
@@ -15,13 +17,21 @@ extents = Vector2( 234.562, 1542.31 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 245.285, 1538.48 )
 
-[node name="ScrubPopup" instance=ExtResource( 3 )]
+[node name="BasePopup" instance=ExtResource( 3 )]
 script = ExtResource( 8 )
 
-[node name="Label" parent="Panel" index="2"]
+[node name="ScrubLeft" type="AudioStreamPlayer" parent="Panel" index="0"]
+stream = ExtResource( 9 )
+volume_db = -10.0
+
+[node name="ScrubRight" type="AudioStreamPlayer" parent="Panel" index="1"]
+stream = ExtResource( 10 )
+volume_db = -10.0
+
+[node name="Label" parent="Panel" index="4"]
 text = "scrub the stains!"
 
-[node name="Sprite" parent="Panel" index="3"]
+[node name="Sprite" parent="Panel" index="5"]
 position = Vector2( 297.541, 342.492 )
 scale = Vector2( 0.198058, 0.198587 )
 texture = ExtResource( 1 )

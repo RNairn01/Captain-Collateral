@@ -16,6 +16,7 @@ public class PlayerMovement : Godot.KinematicBody2D
     private bool canStick;
     private Vector2 velocity = new Vector2();
     private readonly Vector2 floorOrientation = new Vector2(0, -1);
+    private readonly Vector2 playerStartPos = new Vector2(73, 887);
 
     private AnimatedSprite anim;
     
@@ -170,6 +171,14 @@ public class PlayerMovement : Godot.KinematicBody2D
         {
             anim.Animation = "fall";
             falling = false;
+        }
+    }
+
+    public void _on_PlayerCatcher_body_entered(PhysicsBody2D body)
+    {
+        if (body.Name == "player")
+        {
+            body.Position = playerStartPos;
         }
     }
 }

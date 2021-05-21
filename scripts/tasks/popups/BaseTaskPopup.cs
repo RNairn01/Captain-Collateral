@@ -29,7 +29,6 @@ public class BaseTaskPopup : Control
         if (Input.IsActionJustPressed("click"))
         {
             player.InTask = false;
-            GD.Print("click");
             QueueFree();
         }
     }

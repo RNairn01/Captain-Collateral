@@ -10,7 +10,6 @@ public class CarTask : BaseTaskPopup
     
     public override void _Ready()
     {
-        GD.Print("task loaded"); 
         car = GetNode<AnimatedSprite>("Panel/Sprite/AnimatedSprite");
         slider = GetNode<HSlider>("Panel/Sprite/HSlider");
         gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");

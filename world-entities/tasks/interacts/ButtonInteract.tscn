@@ -38,7 +38,7 @@ shape = SubResource( 1 )
 position = Vector2( 96.1511, -144.809 )
 scale = Vector2( 0.199609, 0.20715 )
 frames = SubResource( 2 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Label" type="Label" parent="InteractButton"]

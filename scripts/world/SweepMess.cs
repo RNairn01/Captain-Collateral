@@ -24,11 +24,9 @@ public class SweepMess : Node2D
         if (body.Name == "player" && !hasBeenTriggered)
         {
             hasBeenTriggered = true;
-            var children = GetChildren();
             var sweep = GetChild<AudioStreamPlayer>(2);
             sweep.Play();
             gameManager.SweepDone++;
-            GD.Print(gameManager.SweepDone);
             player.IsSweeping = true;
             Visible = false;
             RemovalTimer(0.8f);

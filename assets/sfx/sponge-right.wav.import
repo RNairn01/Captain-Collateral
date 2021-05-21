@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sponge-right.wav-18a27afa1e15c445e58fec8d19caecd4.sample"
+
+[deps]
+
+source_file="res://assets/sfx/sponge-right.wav"
+dest_files=[ "res://.import/sponge-right.wav-18a27afa1e15c445e58fec8d19caecd4.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

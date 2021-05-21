@@ -12,10 +12,11 @@ public class ScrubTask : BaseTaskPopup
     private Sponge sponge;
     private Sprite scrub1, scrub2, scrub3, scrub4;
     private Sprite[] stains;
+    private AudioStreamPlayer scrubLeft;
+    private AudioStreamPlayer scrubRight;
     
     public override void _Ready()
     {
-        GD.Print("task loaded"); 
         gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
         hasLeftBeenScrubbed = false;
         hasRightBeenScrubbed = false;
@@ -27,6 +28,8 @@ public class ScrubTask : BaseTaskPopup
         scrub4 = GetNode<Sprite>("Panel/Sprite/Scrub4");
         stains = new[] {scrub4, scrub3, scrub2, scrub1};
         totalStains = stains.Length;
+        scrubLeft = GetNode<AudioStreamPlayer>("Panel/ScrubLeft");
+        scrubRight = GetNode<AudioStreamPlayer>("Panel/ScrubRight");
     }
 
     protected override void PopupTask()
@@ -39,23 +42,26 @@ public class ScrubTask : BaseTaskPopup
         if (!isTaskComplete && totalStainsScrubbed >= totalStains)
         {
             isTaskComplete = true;
+            gameManager.TaskDone++;
             DelayThenFree(0.5f);
         }
     }
 
     public void _on_ZoneLeft_area_entered(Area2D area)
     {
-        if (!hasLeftBeenScrubbed && area.GetParent().Name == sponge.Name)
+        if (!hasLeftBeenScrubbed && area.GetParent().Name == sponge.Name && !isTaskComplete)
         {
             hasLeftBeenScrubbed = true;
+            scrubLeft.Play();
         } 
     }
     
     public void _on_ZoneRight_area_entered(Area2D area)
     {
-        if (!hasRightBeenScrubbed && area.GetParent().Name == sponge.Name)
+        if (!hasRightBeenScrubbed && area.GetParent().Name == sponge.Name && !isTaskComplete)
         {
             hasRightBeenScrubbed = true;
+            scrubRight.Play();
         } 
     }
 

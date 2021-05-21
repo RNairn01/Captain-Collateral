@@ -7,8 +7,7 @@ public class Sponge : Sprite
     private ScrubTask scrubTask;
     public override void _Ready()
     {
-        GD.Print(GetTree().Root.GetChildren());
-        scrubTask = GetTree().Root.GetNode<ScrubTask>("ScrubPopup");
+        scrubTask = GetTree().Root.GetNode<ScrubTask>("BasePopup");
     }
 
     public override void _Process(float delta)

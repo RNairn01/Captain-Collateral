@@ -55,10 +55,10 @@ scale = Vector2( 0.999382, 0.995613 )
 frames = SubResource( 1 )
 
 [node name="HSlider" type="HSlider" parent="Panel/Sprite" index="1"]
-margin_left = -887.025
-margin_top = 955.031
-margin_right = 979.975
-margin_bottom = 1055.03
+margin_left = -1397.72
+margin_top = 980.122
+margin_right = 1444.28
+margin_bottom = 1080.12
 rect_scale = Vector2( 1, 3 )
 custom_icons/grabber_highlight = ExtResource( 17 )
 custom_icons/grabber = ExtResource( 14 )
