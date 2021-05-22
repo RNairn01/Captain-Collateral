@@ -18,7 +18,7 @@ taskInLevel = 2
 position = Vector2( 368, 928 )
 
 [node name="SweepMess2" parent="." index="3" instance=ExtResource( 6 )]
-position = Vector2( 1192, 125 )
+position = Vector2( 1200, 236.534 )
 
 [node name="SweepMess4" parent="." index="4" instance=ExtResource( 6 )]
 position = Vector2( 1013, 621 )
@@ -89,7 +89,7 @@ position = Vector2( 1013, 696 )
 position = Vector2( 752, 408.696 )
 
 [node name="tile3" parent="Tiles" index="22" instance=ExtResource( 3 )]
-position = Vector2( 1192, 200 )
+position = Vector2( 1200, 312 )
 
 [node name="tile-long2" parent="Tiles" index="23" instance=ExtResource( 2 )]
 position = Vector2( 368, 432 )

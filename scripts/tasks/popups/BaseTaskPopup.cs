@@ -4,8 +4,8 @@ using System;
 public class BaseTaskPopup : Control
 {
     protected PlayerMovement player;
-    protected AudioStreamPlayer successSound;
-    protected bool isTaskComplete = false;
+    private AudioStreamPlayer successSound;
+    public bool isTaskComplete = false;
     public override void _Ready()
     {
        player = GetTree().Root.GetNode<PlayerMovement>("Node2D/player");

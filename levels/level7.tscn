@@ -15,6 +15,12 @@
 sweepInLevel = 3
 taskInLevel = 2
 
+[node name="TextureRect" parent="." index="1"]
+margin_left = -64.0
+margin_top = -304.0
+margin_right = 2936.0
+margin_bottom = 1696.0
+
 [node name="SweepMess" parent="." index="2" instance=ExtResource( 6 )]
 position = Vector2( 704, 221 )
 

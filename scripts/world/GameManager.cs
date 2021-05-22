@@ -7,7 +7,7 @@ public class GameManager : Node
     [Export] private int taskInLevel;
     public int SweepDone;
     public int TaskDone;
-    private bool isLevelComplete = false;
+    public bool IsLevelComplete = false;
     
     public override void _Ready()
     {  
@@ -15,10 +15,10 @@ public class GameManager : Node
     
     public override void _Process(float delta)
     {
-        if (!isLevelComplete && (SweepDone >= sweepInLevel && TaskDone >= taskInLevel))
+        if (!IsLevelComplete && (SweepDone >= sweepInLevel && TaskDone >= taskInLevel))
         {
             GD.Print("level finished");
-            isLevelComplete = true;
+            IsLevelComplete = true;
         }
     }
 }
