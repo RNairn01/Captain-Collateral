@@ -154,10 +154,8 @@ public class PlayerMovement : Godot.KinematicBody2D
 
     private async void WallJumpTimer(float time)
     {
-        GD.Print("timer started"); 
         currentGravity = 0;
         await ToSignal(GetTree().CreateTimer(time), "timeout");
-        GD.Print("timer ended");
         if (!IsOnWall())
         {
             currentGravity = DefaultGravity;

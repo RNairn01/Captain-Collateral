@@ -34,6 +34,7 @@ public class BaseTaskPopup : Control
     }
     protected async void DelayThenFree(float time)
     {
+        Visible = false;
         player.InTask = false;
         await ToSignal(GetTree().CreateTimer(time), "timeout");
         successSound.Play();

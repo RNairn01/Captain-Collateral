@@ -25,6 +25,10 @@ public class ShopTask : BaseTaskPopup
        {
           isTaskComplete = true;
           gameManager.TaskDone++;
+          actionFigure.Visible = false;
+          planet.Visible = false;
+          shirt.Visible = false;
+          head.Visible = false;
           DelayThenFree(0.5f);
        }
 

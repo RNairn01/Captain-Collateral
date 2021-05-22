@@ -26,7 +26,7 @@ public class TaskInteract : Node2D
 
         if (childTask.isTaskComplete)
         {
-            DelayThenFree(0.5f);
+            QueueFree();
         }
     }
 
@@ -41,10 +41,5 @@ public class TaskInteract : Node2D
     public void _on_Area2D_body_exited(PhysicsBody2D body)
     {
         canInteract = false;
-    }
-    private async void DelayThenFree(float time)
-    {
-        await ToSignal(GetTree().CreateTimer(time), "timeout");
-        QueueFree();
     }
 }

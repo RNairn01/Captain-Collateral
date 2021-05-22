@@ -43,6 +43,7 @@ public class ScrubTask : BaseTaskPopup
         {
             isTaskComplete = true;
             gameManager.TaskDone++;
+            sponge.Visible = false;
             DelayThenFree(0.5f);
         }
     }

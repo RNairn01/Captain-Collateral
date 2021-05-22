@@ -10,28 +10,6 @@
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
-[node name="GameManager" parent="." index="0"]
-sweepInLevel = 4
-taskInLevel = 2
-
-[node name="SweepMess" parent="." index="2" instance=ExtResource( 6 )]
-position = Vector2( 368, 928 )
-
-[node name="SweepMess2" parent="." index="3" instance=ExtResource( 6 )]
-position = Vector2( 1200, 236.534 )
-
-[node name="SweepMess4" parent="." index="4" instance=ExtResource( 6 )]
-position = Vector2( 1013, 621 )
-
-[node name="SweepMess3" parent="." index="5" instance=ExtResource( 6 )]
-position = Vector2( 760, 333.696 )
-
-[node name="ScrubInteract" parent="." index="6" instance=ExtResource( 7 )]
-position = Vector2( 731, 856 )
-
-[node name="ButtonInteract" parent="." index="7" instance=ExtResource( 4 )]
-position = Vector2( 293, 288 )
-
 [node name="tile-long" parent="Tiles" index="2" instance=ExtResource( 2 )]
 position = Vector2( 1328, 1006 )
 scale = Vector2( 8, 0.5 )
@@ -96,3 +74,25 @@ position = Vector2( 368, 432 )
 
 [node name="tile-tall3" parent="Tiles" index="24" instance=ExtResource( 5 )]
 position = Vector2( 293, 656 )
+
+[node name="SweepMess" parent="." index="2" instance=ExtResource( 6 )]
+position = Vector2( 368, 928 )
+
+[node name="SweepMess2" parent="." index="3" instance=ExtResource( 6 )]
+position = Vector2( 1200, 236.534 )
+
+[node name="SweepMess4" parent="." index="4" instance=ExtResource( 6 )]
+position = Vector2( 1013, 621 )
+
+[node name="SweepMess3" parent="." index="5" instance=ExtResource( 6 )]
+position = Vector2( 760, 333.696 )
+
+[node name="ScrubInteract" parent="." index="6" instance=ExtResource( 7 )]
+position = Vector2( 731, 856 )
+
+[node name="ButtonInteract" parent="." index="7" instance=ExtResource( 4 )]
+position = Vector2( 293, 288 )
+
+[node name="GameManager" parent="." index="11"]
+sweepInLevel = 4
+taskInLevel = 2
