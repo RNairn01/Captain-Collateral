@@ -3,13 +3,14 @@ using System;
 
 public class LevelTimer : Timer
 {
-    public float levelTime = 0;
+    private float levelTime;
     private Label timerValue;
     private GameManager gameManager;
     private bool hasSubmittedTime = false;
     
     public override void _Ready()
     {
+        levelTime = 0;
         timerValue = GetChild<Label>(0);
         gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
         WaitTime = 0.1f;
@@ -23,10 +24,10 @@ public class LevelTimer : Timer
             levelTime += 0.1f;
             timerValue.Text = levelTime.ToString("0.0");
         }
-        else if (!hasSubmittedTime)
-        {
-            TimerTracker.Times.Add(levelTime);
-            hasSubmittedTime = true;
-        }
+    }
+
+    public void SubmitTime()
+    {
+        TimerTracker.Times.Add(levelTime);
     }
 }

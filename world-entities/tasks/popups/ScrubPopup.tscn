@@ -22,11 +22,11 @@ script = ExtResource( 8 )
 
 [node name="ScrubLeft" type="AudioStreamPlayer" parent="Panel" index="0"]
 stream = ExtResource( 9 )
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="ScrubRight" type="AudioStreamPlayer" parent="Panel" index="1"]
 stream = ExtResource( 10 )
-volume_db = -10.0
+volume_db = -5.0
 
 [node name="Label" parent="Panel" index="4"]
 text = "scrub the stains!"

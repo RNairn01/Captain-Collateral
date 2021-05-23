@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://world-entities/tasks/popups/BaseTaskPopup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tasks/car-task/Car_Flip-1.png" type="Texture" id=2]
@@ -17,6 +17,7 @@
 [ext_resource path="res://assets/ui/slider-back.png" type="Texture" id=15]
 [ext_resource path="res://assets/ui/slider-fill.png" type="Texture" id=16]
 [ext_resource path="res://assets/ui/slider-grabber-highlight.png" type="Texture" id=17]
+[ext_resource path="res://assets/sfx/car-flip.wav" type="AudioStream" id=18]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -41,10 +42,14 @@ region_rect = Rect2( 0, 0, 800, 100 )
 [node name="BasePopup" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
-[node name="Label" parent="Panel" index="2"]
+[node name="CarFlip" type="AudioStreamPlayer" parent="Panel" index="0"]
+stream = ExtResource( 18 )
+volume_db = -5.0
+
+[node name="Label" parent="Panel" index="3"]
 text = "flip the car!"
 
-[node name="Sprite" parent="Panel" index="3"]
+[node name="Sprite" parent="Panel" index="4"]
 position = Vector2( 297.784, 340.365 )
 scale = Vector2( 0.197578, 0.199214 )
 texture = ExtResource( 2 )

@@ -9,6 +9,7 @@ public class ShopTask : BaseTaskPopup
     private bool holdingFigure, holdingPlanet, holdingShirt, holdingHead;
     private bool figureInPlace, planetInPlace, shirtInPlace, headInPlace;
     private Sprite actionFigure, planet, shirt, head;
+    private AudioStreamPlayer itemPickup, itemPutdown;
 
     public override void _Ready()
     {
@@ -17,6 +18,8 @@ public class ShopTask : BaseTaskPopup
         planet = GetNode<Sprite>("Panel/Sprite/Draggables/Planet");
         shirt = GetNode<Sprite>("Panel/Sprite/Draggables/Shirt");
         head = GetNode<Sprite>("Panel/Sprite/Draggables/Head");
+        itemPickup = GetNode<AudioStreamPlayer>("Panel/ItemPickup");
+        itemPutdown = GetNode<AudioStreamPlayer>("Panel/ItemPutdown");
     }
 
     protected override void PopupTask()
@@ -68,11 +71,13 @@ public class ShopTask : BaseTaskPopup
         if (!isHoldingSomething && Input.IsActionPressed("click"))
         {
             isHoldingSomething = true;
+            itemPickup.Play();
             holdingFigure = true;
         }
         else if (isHoldingSomething && Input.IsActionJustReleased("click"))
         {
            holdingFigure = false;
+           itemPutdown.Play();
            isHoldingSomething = false;
         }
     }
@@ -81,11 +86,13 @@ public class ShopTask : BaseTaskPopup
         if (!isHoldingSomething && Input.IsActionPressed("click"))
         {
             isHoldingSomething = true;
+            itemPickup.Play();
             holdingPlanet = true;
         }
         else if (isHoldingSomething && Input.IsActionJustReleased("click"))
         {
            holdingPlanet = false;
+           itemPutdown.Play();
            isHoldingSomething = false;
         }
     }
@@ -94,11 +101,13 @@ public class ShopTask : BaseTaskPopup
         if (!isHoldingSomething && Input.IsActionPressed("click"))
         {
             isHoldingSomething = true;
+            itemPickup.Play();
             holdingShirt = true;
         }
         else if (isHoldingSomething && Input.IsActionJustReleased("click"))
         {
            holdingShirt = false;
+           itemPutdown.Play();
            isHoldingSomething = false;
         }
     }
@@ -107,11 +116,13 @@ public class ShopTask : BaseTaskPopup
         if (!isHoldingSomething &&  Input.IsActionPressed("click"))
         {
             isHoldingSomething = true;
+            itemPickup.Play();
             holdingHead = true;
         }
         else if (isHoldingSomething && Input.IsActionJustReleased("click"))
         {
            holdingHead = false;
+           itemPutdown.Play();
            isHoldingSomething = false;
         }
     }

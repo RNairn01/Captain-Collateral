@@ -35,27 +35,35 @@ script = ExtResource( 2 )
 
 [node name="Crack1" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="0"]
 stream = ExtResource( 12 )
+volume_db = -15.0
 
 [node name="Crack2" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="1"]
 stream = ExtResource( 14 )
+volume_db = -15.0
 
 [node name="Crack3" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="2"]
 stream = ExtResource( 19 )
+volume_db = -15.0
 
 [node name="Crack4" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="3"]
 stream = ExtResource( 17 )
+volume_db = -15.0
 
 [node name="Crack5" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="4"]
 stream = ExtResource( 13 )
+volume_db = -15.0
 
 [node name="Crack6" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="5"]
 stream = ExtResource( 16 )
+volume_db = -15.0
 
 [node name="Crack7" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="6"]
 stream = ExtResource( 18 )
+volume_db = -15.0
 
 [node name="CrackBreak" type="AudioStreamPlayer" parent="Panel/CrackSounds" index="7"]
 stream = ExtResource( 15 )
+volume_db = -15.0
 
 [node name="Label" parent="Panel" index="3"]
 text = "mash left click to destroy the alien artifact!"

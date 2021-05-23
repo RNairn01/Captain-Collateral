@@ -10,12 +10,12 @@ public class GameManager : Node
     public bool IsLevelComplete = false;
     private AudioStreamPlayer uiSound;
     private AnimationPlayer fadeAnim;
+    private LevelTimer levelTimer;
     
     public override void _Ready()
     {
         uiSound = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
         fadeAnim = GetNode<ColorRect>("ColorRect").GetNode<AnimationPlayer>("FadeAnim");
-        GD.Print(fadeAnim.Name);
     }
     
     public override void _Process(float delta)
@@ -27,12 +27,19 @@ public class GameManager : Node
             LoadNextLevel();
         }
     }
+    
+    //Scene management should really be considered earlier in future projects
     private async void LoadNextLevel()
     {
         fadeAnim.Play("fade");
+        uiSound.Play();
         SceneManager.currentLevel++;
+        levelTimer = GetTree().Root.GetNode<LevelTimer>("Node2D/Timer");
+        levelTimer.SubmitTime();
         if (SceneManager.currentLevel < SceneManager.levelScenes.Length)
         {
+            GD.Print(TimerTracker.Times.Count);
+            GD.Print(TimerTracker.Times[0]);
            await ToSignal(GetTree().CreateTimer(1f), "timeout");
            GetTree().ChangeScene(SceneManager.levelScenes[SceneManager.currentLevel]);
         }

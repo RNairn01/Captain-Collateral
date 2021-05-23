@@ -42,7 +42,7 @@ __meta__ = {
 
 [node name="SuccessSound" type="AudioStreamPlayer" parent="Panel"]
 stream = ExtResource( 4 )
-volume_db = -10.0
+volume_db = -15.0
 pitch_scale = 0.9
 
 [node name="Panel" type="Panel" parent="Panel"]

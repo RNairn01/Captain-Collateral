@@ -11,13 +11,15 @@ config_version=4
 [application]
 
 config/name="Captain Collateral"
-run/main_scene="res://levels/testLevel.tscn"
+run/main_scene="res://levels/MainMenu.tscn"
+boot_splash/image="res://assets/splash-screen.png"
 config/icon="res://icon.png"
 
 [autoload]
 
-TimerTracker="*res://scripts/TimerTracker.cs"
 SceneManager="*res://scripts/world/SceneManager.cs"
+TimerTracker="*res://scripts/world/TimerTracker.cs"
+MusicManager="*res://world-entities/MusicManager.tscn"
 
 [display]
 

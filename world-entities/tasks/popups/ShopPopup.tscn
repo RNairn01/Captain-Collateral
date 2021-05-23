@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://world-entities/tasks/popups/BaseTaskPopup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/tasks/shop-task/Shop_Front-1.png" type="Texture" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://assets/tasks/shop-task/shop-planet.png" type="Texture" id=5]
 [ext_resource path="res://assets/tasks/shop-task/shop-head.png" type="Texture" id=6]
 [ext_resource path="res://assets/tasks/shop-task/shop-shirt.png" type="Texture" id=7]
+[ext_resource path="res://assets/sfx/item-putdown.wav" type="AudioStream" id=8]
+[ext_resource path="res://assets/sfx/item-pickup.wav" type="AudioStream" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 183.658, 214.525 )
@@ -37,10 +39,18 @@ margin_top = -0.374573
 margin_bottom = -0.374512
 script = ExtResource( 3 )
 
-[node name="Label" parent="Panel" index="2"]
+[node name="ItemPickup" type="AudioStreamPlayer" parent="Panel" index="1"]
+stream = ExtResource( 9 )
+pitch_scale = 0.8
+
+[node name="ItemPutdown" type="AudioStreamPlayer" parent="Panel" index="2"]
+stream = ExtResource( 8 )
+pitch_scale = 0.8
+
+[node name="Label" parent="Panel" index="4"]
 text = "Fix the store front!"
 
-[node name="Sprite" parent="Panel" index="3"]
+[node name="Sprite" parent="Panel" index="5"]
 position = Vector2( 297.362, 338.918 )
 scale = Vector2( 0.197837, 0.198508 )
 texture = ExtResource( 2 )

@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/ui/dialogue-template.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://world-entities/GameManager.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/button-font-time-text.tres" type="DynamicFont" id=4]
+[ext_resource path="res://scripts/DialogueAdvance.cs" type="Script" id=5]
+[ext_resource path="res://assets/sfx/ui-click.wav" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 200
@@ -11,6 +14,8 @@ font_data = ExtResource( 2 )
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -30,6 +35,33 @@ margin_bottom = 946.036
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.878431, 0.796078, 0.431373, 1 )
 text = "SKIP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UISound" type="AudioStreamPlayer" parent="Sprite"]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="Captain" type="Label" parent="Sprite"]
+margin_left = -1200.0
+margin_top = -752.0
+margin_right = 145.0
+margin_bottom = -412.0
+custom_fonts/font = ExtResource( 4 )
+text = "Ah, Stevie my boy! You've finally arrived! Do you remember how to click to advance dialogue?"
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Steve" type="Label" parent="Sprite"]
+margin_left = -242.424
+margin_top = 283.688
+margin_right = 1102.58
+margin_bottom = 623.688
+custom_fonts/font = ExtResource( 4 )
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

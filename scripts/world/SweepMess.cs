@@ -13,11 +13,6 @@ public class SweepMess : Node2D
         gameManager = GetTree().Root.GetNode<GameManager>("Node2D/GameManager");
     }
 
-    public override void _PhysicsProcess(float delta)
-    {
-    
-    }
-
     private bool hasBeenTriggered = false;
     public void _on_Area2D_body_entered(PhysicsBody2D body)
     {
@@ -29,7 +24,7 @@ public class SweepMess : Node2D
             gameManager.SweepDone++;
             player.IsSweeping = true;
             Visible = false;
-            RemovalTimer(0.8f);
+            RemovalTimer(0.7f);
         }
     }
     private async void RemovalTimer(float time)
