@@ -26,7 +26,7 @@ taskInLevel = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
-volume_db = -10.0
+volume_db = -15.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1920.0

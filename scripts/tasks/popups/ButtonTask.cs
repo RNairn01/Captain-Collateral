@@ -101,13 +101,8 @@ public class ButtonTask : BaseTaskPopup
         if (!isTaskComplete && GetButton(index).GetChild<Label>(1).Text == "WIPE CCTV")
         {
             isTaskComplete = true;
-            GD.Print("right button");
             gameManager.TaskDone++;
             DelayThenFree(0.5f);
-        }
-        else
-        {
-            GD.Print("wrong button");
         }
     }
 }

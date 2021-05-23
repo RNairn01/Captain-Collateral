@@ -28,7 +28,6 @@ public class DialogueAdvance : Node
     {
         if (Input.IsActionJustPressed("click") && dialogueProgress < dialogueArr.Length)
         {
-            GD.Print("Advance");
             AdvanceDialogue(speakerOrder[dialogueProgress]);
             dialogueProgress++;
         }

@@ -22,9 +22,13 @@ public class GameManager : Node
     {
         if (!IsLevelComplete && (SweepDone >= sweepInLevel && TaskDone >= taskInLevel))
         {
-            GD.Print("level finished");
             IsLevelComplete = true;
             LoadNextLevel();
+        }
+
+        if (Input.IsActionJustPressed("quit"))
+        {
+            GetTree().Quit();
         }
     }
     
@@ -38,13 +42,12 @@ public class GameManager : Node
         levelTimer.SubmitTime();
         if (SceneManager.currentLevel < SceneManager.levelScenes.Length)
         {
-            GD.Print(TimerTracker.Times.Count);
-            GD.Print(TimerTracker.Times[0]);
-           await ToSignal(GetTree().CreateTimer(1f), "timeout");
-           GetTree().ChangeScene(SceneManager.levelScenes[SceneManager.currentLevel]);
+            await ToSignal(GetTree().CreateTimer(1f), "timeout");
+            GetTree().ChangeScene(SceneManager.levelScenes[SceneManager.currentLevel]);
         }
         else
         {
+            await ToSignal(GetTree().CreateTimer(1f), "timeout");
             GetTree().ChangeScene(SceneManager.endScene);
         }
         

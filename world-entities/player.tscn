@@ -53,10 +53,10 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 24 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 23 ) ],
+"frames": [ ExtResource( 24 ), ExtResource( 3 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 22 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "idle",
-"speed": 10.0
+"speed": 14.0
 }, {
 "frames": [ ExtResource( 58 ), ExtResource( 48 ), ExtResource( 55 ), ExtResource( 56 ), ExtResource( 58 ) ],
 "loop": true,
@@ -102,7 +102,7 @@ DefaultGravity = 200.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "idle"
-frame = 1
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
